@@ -6,7 +6,7 @@ services:
 
 before_install:
   # build docker image
-  - docker build -t zhihengj/surver-app -f Dockerfile.dev .
+  - docker build -t zhihengj/survey-app -f Dockerfile.dev .
 
 
 script:
