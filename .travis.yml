@@ -26,6 +26,7 @@ deploy:
   bucket-name: "elasticbeanstalk-us-east-1-387032983116" 
   # equal to app name
   bucket-path: "survey-app"
+  edge: true
   on:
     branch: master
   access_key_id: 
