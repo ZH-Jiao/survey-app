@@ -1,0 +1,14 @@
+# super user permission
+sudo: required
+services:
+  - docker
+  # install docker
+
+before_install:
+  # build docker image
+  - docker build -t zhihengj/surver-app -f Dockerfile.dev .
+
+
+script:
+  # run the test
+  - docker run -e CI=true zhihengj/survey-app npm run test -- --coverage
