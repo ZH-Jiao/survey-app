@@ -13,3 +13,21 @@ before_install:
 script:
   # run the test
   - docker run -e CI=true zhihengj/survey-app npm run test -- --coverage
+
+
+# deploy
+deploy:
+  # pre configured provider
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "survey-app"
+  env: "SurveyApp-env"
+  # auto created bucket
+  bucket-name: "elasticbeanstalk-us-east-1-387032983116" 
+  # equal to app name
+  bucket-path: "survey-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_ACCESS_KEY"
