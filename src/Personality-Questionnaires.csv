@@ -1,0 +1,51 @@
+﻿Trait,Number,Item,Strongly Disagree,Disagree,Somewhat Disagree,Neither Agree Nor Disagree,Somewhat Agree,Agree,Strongly Agree
+Extraversion,1,Am the life of the party.,1,2,3,4,5,6,7
+Extraversion,2,Feel comfortable around people.,1,2,3,4,5,6,7
+Extraversion,3,Start conversations.,1,2,3,4,5,6,7
+Extraversion,4,Talk to a lot of different people at parties.,1,2,3,4,5,6,7
+Extraversion,5,Don't mind being the center of attention.,1,2,3,4,5,6,7
+Extraversion,6,Don't talk a lot.,7,6,5,4,3,2,1
+Extraversion,7,Keep in the background.,7,6,5,4,3,2,1
+Extraversion,8,Have little to say.,7,6,5,4,3,2,1
+Extraversion,9,Don't like to draw attention to myself.,7,6,5,4,3,2,1
+Extraversion,10,Am quiet around strangers.,7,6,5,4,3,2,1
+Agreeableness,11,Am interested in people.,1,2,3,4,5,6,7
+Agreeableness,12,Sympathize with others' feelings.,1,2,3,4,5,6,7
+Agreeableness,13,Have a soft heart.,1,2,3,4,5,6,7
+Agreeableness,14,Take time out for others.,1,2,3,4,5,6,7
+Agreeableness,15,Feel others' emotions.,1,2,3,4,5,6,7
+Agreeableness,16,Make people feel at ease.,1,2,3,4,5,6,7
+Agreeableness,17,Am not really interested in others.,7,6,5,4,3,2,1
+Agreeableness,18,Insult people.,7,6,5,4,3,2,1
+Agreeableness,19,Am not interested in other people's problems.,7,6,5,4,3,2,1
+Agreeableness,20,Feel little concern for others.,7,6,5,4,3,2,1
+Conscientiousness,21,Am always prepared.,1,2,3,4,5,6,7
+Conscientiousness,22,Pay attention to details.,1,2,3,4,5,6,7
+Conscientiousness,23,Get chores done right away.,1,2,3,4,5,6,7
+Conscientiousness,24,Like order.,1,2,3,4,5,6,7
+Conscientiousness,25,Follow a schedule.,1,2,3,4,5,6,7
+Conscientiousness,26,Am exacting in my work.,1,2,3,4,5,6,7
+Conscientiousness,27,Leave my belongings around.,7,6,5,4,3,2,1
+Conscientiousness,28,Make a mess of things.,7,6,5,4,3,2,1
+Conscientiousness,29,Often forget to put things back in their proper place.,7,6,5,4,3,2,1
+Conscientiousness,30,Shirk my duties.,7,6,5,4,3,2,1
+Emotional Stability,31,Am relaxed most of the time.,1,2,3,4,5,6,7
+Emotional Stability,32,Seldom feel blue.,1,2,3,4,5,6,7
+Emotional Stability,33,Get stressed out easily.,7,6,5,4,3,2,1
+Emotional Stability,34,Worry about things.,7,6,5,4,3,2,1
+Emotional Stability,35,Am easily disturbed.,7,6,5,4,3,2,1
+Emotional Stability,36,Get upset easily.,7,6,5,4,3,2,1
+Emotional Stability,37,Change my mood a lot.,7,6,5,4,3,2,1
+Emotional Stability,38,Have frequent mood swings.,7,6,5,4,3,2,1
+Emotional Stability,39,Get irritated easily.,7,6,5,4,3,2,1
+Emotional Stability,40,Often feel blue.,7,6,5,4,3,2,1
+Intellect,41,Have a rich vocabulary.,1,2,3,4,5,6,7
+Intellect,42,Have a vivid imagination.,1,2,3,4,5,6,7
+Intellect,43,Have excellent ideas.,1,2,3,4,5,6,7
+Intellect,44,Am quick to understand things.,1,2,3,4,5,6,7
+Intellect,45,Use difficult words.,1,2,3,4,5,6,7
+Intellect,46,Spend time reflecting on things.,1,2,3,4,5,6,7
+Intellect,47,Am full of ideas.,1,2,3,4,5,6,7
+Intellect,48,Have difficulty understanding abstract ideas.,7,6,5,4,3,2,1
+Intellect,49,Am not interested in abstract ideas.,7,6,5,4,3,2,1
+Intellect,50,Do not have a good imagination.,7,6,5,4,3,2,1
