@@ -11,8 +11,18 @@ import Container from '@material-ui/core/Container';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.updateData = this.updateData.bind(this);
+    this.getData = this.getData.bind(this);
+    this.state = {data: {}};
   }
 
+  updateData(theData) {
+    this.setState({data: theData});
+  }
+
+  getData() {
+    return this.state.data;
+  }
   render() {
     return (
       <div>
@@ -27,11 +37,11 @@ class App extends Component {
               }/>
 
               <Route path="/questionnaire" render={(props) =>
-                (<Questionnaire {...props}/>)  
+                (<Questionnaire {...props} updateData = {this.updateData}/>)  
               }/>
               
               <Route path="/result" render={(props) =>
-                (<Result {...props}/>)  
+                (<Result {...props} getData = {this.getData}/>)  
               }/>
             </HashRouter>
           </Container>

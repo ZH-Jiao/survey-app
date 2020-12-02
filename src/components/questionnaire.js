@@ -1,5 +1,7 @@
 import * as Survey from "survey-react";
+import { Redirect } from 'react-router';
 import "survey-react/survey.css";
+import {withRouter} from 'react-router-dom';
 
 const fs = require("fs");
 const { Component } = require("react");
@@ -14,23 +16,28 @@ class Questionnaire extends Component {
 
         var surveyJson = buildSurveyJson(rawCSV);
         this.state = {"surveyJson": surveyJson};
+        this.sendData = this.sendData.bind(this);
+        window.questionComponent = this;
         console.log(this.state);
+    }
+
+    sendData(survey) {
+        this.props.updateData(survey.data);
+        //sendDataToServer(survey);
+        this.props.history.push('/result');
     }
 
     render() {
         var model = new Survey.Model(this.state.surveyJson)
+        //model.onComplete.add(this.sendData(survey))
         return (
              <div> 
-                 <Survey.Survey model={model} onComplete={sendDataToServer} />
+                 <Survey.Survey model={model} onComplete={this.sendData}/>
              </div>
              );
     }
 }
 
-
-function sendDataToServer(survey) {
-    alert("The results are:" + JSON.stringify(survey.data));
-}
 
 function buildSurveyJson(file) {
     var lines = file.split("\n");
@@ -84,7 +91,8 @@ function buildSurveyJson(file) {
                 "name": "page1",
                 "elements": questions
             }
-        ]
+        ],
+        completedHtml: "<p>What</p>"//"<meta http-equiv=\"refresh\" content=\"0; URL=/#/result\" />",
     }
     return result
 }
@@ -141,4 +149,4 @@ Intellect,48,Have difficulty understanding abstract ideas.,7,6,5,4,3,2,1\n\
 Intellect,49,Am not interested in abstract ideas.,7,6,5,4,3,2,1\n\
 Intellect,50,Do not have a good imagination.,7,6,5,4,3,2,1"
 
-export default Questionnaire;
+export default withRouter(Questionnaire);
