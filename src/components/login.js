@@ -31,6 +31,12 @@ class Login extends Component {
         this.props.history.push(path);
     }
 
+    handleSubmit() {
+        // Check username exists by GET on ""
+
+        // Add username to session 
+    }
+
     
     render() {
         return (
@@ -42,11 +48,11 @@ class Login extends Component {
                     Please type in your Reddit username to get started
                 </Typography>
                 {/* for test checking */}
-                <form className={useStyles.root} noValidate autoComplete="off">
-                    <TextField id="outlined-basic" label="Reddit Username" variant="outlined" />
+                <form className={useStyles.root} id="usernameForm" noValidate autoComplete="off">
+                    <TextField id="outlined-basic" name="username" label="Reddit Username" variant="outlined" />
                     <br />
                     <br />
-                        <Button variant="contained" color="primary" onClick={this.startSurvey}>
+                        <Button type="submit" variant="contained" color="primary" onClick={this.startSurvey}>
                             Start
                         </Button>
                     
