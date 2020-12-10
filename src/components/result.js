@@ -121,6 +121,7 @@ class Result extends Component {
 
         return (
             <div>
+                <h1>Thanks for completing the survey</h1>
                 <h4>Your score for extraversion is: {t1}</h4>
                     <p>{txt1}</p>
                 <h4>Your score for agreeableness is: {t2}</h4>
