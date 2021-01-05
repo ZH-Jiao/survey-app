@@ -1,0 +1,6 @@
+Make the options vertical
+Make the answers buttons same size
+Question text larger
+Provide pagination
+
+highlight text when selected

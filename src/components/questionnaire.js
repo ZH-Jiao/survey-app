@@ -41,7 +41,8 @@ class Questionnaire extends Component {
 
 function buildSurveyJson(file) {
     var lines = file.split("\n");
-    var questions = [];
+    var questions = [[]];
+    var index = 0;
     var headers = lines[0].split(",");
     for (var i = 1; i < lines.length; i++) {
         // NO COMMA ALLOWED IN CSV
@@ -82,14 +83,35 @@ function buildSurveyJson(file) {
             ]
         };
         
-        questions.push(obj);
+        questions[index].push(obj);
+        if (i % 10 == 0) {
+            index += 1;
+            questions.push([]);
+        }
     }
+    console.log(questions);
 
     var result = {
         "pages": [
             {
                 "name": "page1",
-                "elements": questions
+                "elements": questions[0]
+            },
+            {
+                "name": "page2",
+                "elements": questions[1]
+            },
+            {
+                "name": "page3",
+                "elements": questions[2]
+            },
+            {
+                "name": "page4",
+                "elements": questions[3]
+            },
+            {
+                "name": "page5",
+                "elements": questions[4]
             }
         ],
         completedHtml: "<p>What</p>"//"<meta http-equiv=\"refresh\" content=\"0; URL=/#/result\" />",
