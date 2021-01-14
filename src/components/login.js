@@ -31,16 +31,21 @@ class Login extends Component {
 
         //temp for demo
         console.log('In(constructor), user code and state');
-        var code = this.props.match.code;
-        // var state = this.props.match.state;
-        console.log(code);
-        UserProfile.setCode(code);
+        if (this.props.match.hasOwnProperty('code')) {
+            console.log('In(constructor), if');
+            var code = this.props.match.code;
+            // var state = this.props.match.state;
+            console.log(code);
+            UserProfile.setCode(code);
+            this.startSurvey();
+        }
+        
         // UserProfile.setState(state);
         // var token = this.fetchToken(code);
         // UserProfile.setToken(token);
 
         // proceed without token
-        this.startSurvey();
+        
 
     }
     
@@ -52,7 +57,7 @@ class Login extends Component {
 
     componentDidMount() {
         console.log("IN ComponentDidUpdate: this.props")
-        console.log(this.props)
+        // console.log(this.props)
 
         // error happened
         if (this.props.match.hasOwnProperty('error')) {
