@@ -7,8 +7,7 @@ const fs = require("fs");
 const { Component } = require("react");
 const react = require("react");
 
-Survey.StylesManager.applyTheme("modern");
-
+//Survey.StylesManager.applyTheme("modern");
 
 class Questionnaire extends Component {
     constructor(props) {
@@ -30,6 +29,14 @@ class Questionnaire extends Component {
     render() {
         var model = new Survey.Model(this.state.surveyJson)
         //model.onComplete.add(this.sendData(survey))
+        model
+        .onUpdateQuestionCssClasses
+        .add(function (model, options) {
+            var classes = options.cssClasses
+
+            classes.mainRoot += " sv_qstn";
+            classes.title += " sq-title"
+        });
         return (
              <div> 
                  <Survey.Survey model={model} onComplete={this.sendData}/>
@@ -41,17 +48,22 @@ class Questionnaire extends Component {
 
 function buildSurveyJson(file) {
     var lines = file.split("\n");
-    var questions = [];
+    var questions = [[]];
+    var index = 0;
     var headers = lines[0].split(",");
     for (var i = 1; i < lines.length; i++) {
         // NO COMMA ALLOWED IN CSV
         var curLine = lines[i].split(",");
         var obj = {   
-            "type": "rating",
+            "type": "radiogroup",
             "name": "question" + curLine[1],
             "title": curLine[2],
             "trait": curLine[0],
-            "rateValues": [{
+            //"columnLayout": "vertical",
+            //"columnMinWidth": "130px",
+
+            "choices": [
+                {
                     "value": curLine[3],
                     "text": headers[3],
                 },
@@ -79,17 +91,38 @@ function buildSurveyJson(file) {
                     "value": curLine[9],
                     "text": headers[9]
                 }
-            ]
+            ],
         };
         
-        questions.push(obj);
+        questions[index].push(obj);
+        if (i % 10 == 0) {
+            index += 1;
+            questions.push([]);
+        }
     }
+    console.log(questions);
 
     var result = {
         "pages": [
             {
                 "name": "page1",
-                "elements": questions
+                "elements": questions[0]
+            },
+            {
+                "name": "page2",
+                "elements": questions[1]
+            },
+            {
+                "name": "page3",
+                "elements": questions[2]
+            },
+            {
+                "name": "page4",
+                "elements": questions[3]
+            },
+            {
+                "name": "page5",
+                "elements": questions[4]
             }
         ],
         completedHtml: "<p>What</p>"//"<meta http-equiv=\"refresh\" content=\"0; URL=/#/result\" />",
