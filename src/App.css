@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+.sq-title {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+.sv_qstn {
+  padding-bottom: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

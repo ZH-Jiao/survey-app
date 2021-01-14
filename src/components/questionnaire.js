@@ -7,8 +7,7 @@ const fs = require("fs");
 const { Component } = require("react");
 const react = require("react");
 
-Survey.StylesManager.applyTheme("modern");
-
+//Survey.StylesManager.applyTheme("modern");
 
 class Questionnaire extends Component {
     constructor(props) {
@@ -30,6 +29,14 @@ class Questionnaire extends Component {
     render() {
         var model = new Survey.Model(this.state.surveyJson)
         //model.onComplete.add(this.sendData(survey))
+        model
+        .onUpdateQuestionCssClasses
+        .add(function (model, options) {
+            var classes = options.cssClasses
+
+            classes.mainRoot += " sv_qstn";
+            classes.title += " sq-title"
+        });
         return (
              <div> 
                  <Survey.Survey model={model} onComplete={this.sendData}/>
@@ -48,11 +55,15 @@ function buildSurveyJson(file) {
         // NO COMMA ALLOWED IN CSV
         var curLine = lines[i].split(",");
         var obj = {   
-            "type": "rating",
+            "type": "radiogroup",
             "name": "question" + curLine[1],
             "title": curLine[2],
             "trait": curLine[0],
-            "rateValues": [{
+            //"columnLayout": "vertical",
+            //"columnMinWidth": "130px",
+
+            "choices": [
+                {
                     "value": curLine[3],
                     "text": headers[3],
                 },
@@ -80,7 +91,7 @@ function buildSurveyJson(file) {
                     "value": curLine[9],
                     "text": headers[9]
                 }
-            ]
+            ],
         };
         
         questions[index].push(obj);
