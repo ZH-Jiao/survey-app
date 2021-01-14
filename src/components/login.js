@@ -37,6 +37,9 @@ class Login extends Component {
     }
 
     componentDidUpdate() {
+        console.log("IN ComponentDidUpdate: this.props")
+        console.log(this.props)
+
         // error happened
         if (this.props.match.hasOwnProperty('error')) {
             alert(this.props.match.error)
