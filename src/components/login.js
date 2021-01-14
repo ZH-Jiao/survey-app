@@ -28,6 +28,20 @@ class Login extends Component {
         super(props);
         this.startSurvey = this.startSurvey.bind(this);
         this.redditAuthentication = this.redditAuthentication.bind(this);
+
+        //temp for demo
+        console.log('In(constructor), user code and state');
+        var code = this.props.match.code;
+        var state = this.props.match.state;
+        console.log(code);
+        UserProfile.setCode(code);
+        UserProfile.setState(state);
+        var token = this.fetchToken(code);
+        UserProfile.setToken(token);
+
+        // proceed without token
+        this.startSurvey();
+
     }
     
     startSurvey() {
@@ -36,7 +50,7 @@ class Login extends Component {
         this.props.history.push(path);
     }
 
-    componentDidUpdate() {
+    componentDidMount() {
         console.log("IN ComponentDidUpdate: this.props")
         console.log(this.props)
 
