@@ -30,7 +30,7 @@ var UserProfile = (function() {
     };
 
     var isLoggedIn = function() {
-        return state !== "";
+        return token !== "";
     }
 
 

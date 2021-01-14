@@ -55,11 +55,13 @@ class Login extends Component {
             var token = this.fetchToken(code);
             UserProfile.setToken(token);
         }
+        // proceed if has token
         if (UserProfile.isLoggedIn()) {
             this.startSurvey();
         }
     }
 
+    // post to get token after getting the code from reddit
     fetchToken(userCode) {
         var requestOption = {
             method: 'POST',
@@ -82,6 +84,7 @@ class Login extends Component {
         )
     }
 
+    // Direct to reddit login and authentication
     redditAuthentication() {
         const authUrl = 'https://www.reddit.com/api/v1/authorize?client_id=LDQqrgv2mmFMQQ&response_type=code&state=some_state&redirect_uri=http://surveyapp-env.eba-r92ervxm.us-east-1.elasticbeanstalk.com/&duration=temporary&scope=identity history'
         window.location.assign(authUrl);
@@ -95,12 +98,10 @@ class Login extends Component {
                     Welcome to the survey
                 </Typography>
                 <Typography variant="h4" gutterBottom>
-                    Please type in your Reddit username to get started
+                    Please use your reddit account to get started
                 </Typography>
-                <Button variant="contained" color="primary" onClick={this.redditAuthentication}>
-                            Login with reddit
-                </Button>
-                {/* for test checking */}
+                
+                {/* for test checking
                 <form className={useStyles.root} id="usernameForm" noValidate autoComplete="off">
                     <TextField id="outlined-basic" name="username" label="Reddit Username" variant="outlined" />
                     <br />
@@ -109,7 +110,12 @@ class Login extends Component {
                             Start
                         </Button>
                     
-                </form>
+                </form> */}
+                <br />
+                <Button variant="contained" color="primary" onClick={this.redditAuthentication}>
+                            get started with reddit
+                </Button>
+                
 
             </div>
         );
