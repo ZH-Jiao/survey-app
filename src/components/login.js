@@ -48,11 +48,14 @@ class Login extends Component {
             UserProfile.setState(state);
             var token = this.fetchToken(code);
             UserProfile.setToken(token);
-        }
-        // proceed if has token
-        if (UserProfile.isLoggedIn()) {
+
+            // proceed without token
             this.startSurvey();
         }
+        // // proceed if has token
+        // if (UserProfile.isLoggedIn()) {
+        //     this.startSurvey();
+        // }
     }
 
     // post to get token after getting the code from reddit
