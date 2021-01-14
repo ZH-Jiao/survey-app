@@ -31,6 +31,7 @@ class Login extends Component {
     }
     
     startSurvey() {
+        console.log('In(startSurvey())');
         let path = "/questionnaire";
         this.props.history.push(path);
     }
@@ -42,6 +43,7 @@ class Login extends Component {
         }
         // being redirected from auth page,fetch Token
         if (this.props.match.hasOwnProperty('code')) {
+            console.log('In(hasOwnProperty(code)), user code created');
             var code = this.props.match.code;
             var state = this.props.match.state;
             UserProfile.setCode(code);
