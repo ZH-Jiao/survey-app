@@ -36,7 +36,7 @@ class Login extends Component {
         this.props.history.push(path);
     }
 
-    componentDidMount() {
+    componentDidUpdate() {
         // error happened
         if (this.props.match.hasOwnProperty('error')) {
             alert(this.props.match.error)
