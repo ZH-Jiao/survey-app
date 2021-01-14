@@ -1,7 +1,9 @@
 import { Redirect } from 'react-router';
+import AWSConnection from './DynamoDbConnection';
 
 const { Component } = require("react");
 const react = require("react");
+const TABLE_NAME = "reddit-user";
 
 
 class Result extends Component {
@@ -15,6 +17,20 @@ class Result extends Component {
 
     retreiveData() {
         return this.props.getData(); 
+    }
+
+    uploadResult(resultList) {
+        var item = {
+            "user": "testUser",
+            // "score1": resultList[0],
+            "score2": resultList[1],
+            "score3": resultList[2],
+            "score4": resultList[3],
+            "score5": resultList[4],
+        };
+        var dynamoDBClient = new AWSConnection();
+        dynamoDBClient.addItem(TABLE_NAME, item);
+
     }
 
     render() {
@@ -58,6 +74,15 @@ class Result extends Component {
                 t5 += parseInt(this.state.data["question"+ i]);
             }
         }
+
+        // Send result scores to DB here
+        var resultList = [];
+        resultList.push(t1);
+        resultList.push(t2);
+        resultList.push(t3);
+        resultList.push(t4);
+        resultList.push(t5);
+        this.uploadResult(resultList);
 
         if (t1 <= 20) {
             txt1 = "Looks like you're an introvert, rather reserved and generally not very resourceful in social relations. At introverts they lack the exuberance, energy and the high level of activation of extroverts. They also tend to be calm, sober, cautious and less interested in social interaction. Their lack of social involvement, however, should not be interpreted as shyness than the extrovert, the introvert simply prefer to spend a little 'more time alone with themselves and feel less need less external stimuli ..'"

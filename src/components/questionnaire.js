@@ -24,6 +24,10 @@ class Questionnaire extends Component {
     sendData(survey) {
         this.props.updateData(survey.data);
         //sendDataToServer(survey);
+        var surveyResult = {
+            
+        }
+
         this.props.history.push('/result');
     }
 
