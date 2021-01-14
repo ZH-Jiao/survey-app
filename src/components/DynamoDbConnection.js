@@ -4,8 +4,8 @@ export default class AWSConnection {
     constructor() {
 
         var myCredentials = new AWS.Credentials();
-        myCredentials.accessKeyId = 'AKIAVUHHWUZGIL3XHTUD';
-        myCredentials.secretAccessKey = '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';
+        myCredentials.accessKeyId = 'AKIAVUHHWUZGGIL2ENFC';
+        myCredentials.secretAccessKey = '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';
 
         var myConfig = new AWS.Config({
             credentials: myCredentials,

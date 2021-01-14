@@ -35,12 +35,6 @@ class Login extends Component {
         this.props.history.push(path);
     }
 
-    handleSubmit() {
-        // Check username exists by GET on ""
-
-        // Add username to session 
-    }
-
     componentDidMount() {
         // error happened
         if (this.props.match.hasOwnProperty('error')) {
