@@ -32,12 +32,12 @@ class Login extends Component {
         //temp for demo
         console.log('In(constructor), user code and state');
         var code = this.props.match.code;
-        var state = this.props.match.state;
+        // var state = this.props.match.state;
         console.log(code);
         UserProfile.setCode(code);
-        UserProfile.setState(state);
-        var token = this.fetchToken(code);
-        UserProfile.setToken(token);
+        // UserProfile.setState(state);
+        // var token = this.fetchToken(code);
+        // UserProfile.setToken(token);
 
         // proceed without token
         this.startSurvey();
