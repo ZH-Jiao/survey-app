@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Router, browserHistory} from "react-router-dom";
+import { Route, BrowserRouter} from "react-router-dom";
 import Login from './components/login.js';
 import Questionnaire from './components/questionnaire.js';
 import Result from './components/result.js';
@@ -31,7 +31,7 @@ class App extends Component {
             <br/>
             <br/>
             <br/>
-            <Router history={browserHistory}>
+            <BrowserRouter history={browserHistory}>
               <Route exact path="/" render={(props) =>
                 (<Login {...props}/>)  
               }/>
@@ -43,7 +43,7 @@ class App extends Component {
               <Route path="/result" render={(props) =>
                 (<Result {...props} getData = {this.getData}/>)  
               }/>
-            </Router>
+            </BrowserRouter>
           </Container>
 
       </div>
