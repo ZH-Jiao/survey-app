@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, HashRouter, Link} from "react-router-dom";
+import { Route, HashRouter, browserHistory} from "react-router-dom";
 import Login from './components/login.js';
 import Questionnaire from './components/questionnaire.js';
 import Result from './components/result.js';
@@ -31,7 +31,7 @@ class App extends Component {
             <br/>
             <br/>
             <br/>
-            <HashRouter>
+            <HashRouter history={browserHistory}>
               <Route exact path="/" render={(props) =>
                 (<Login {...props}/>)  
               }/>
