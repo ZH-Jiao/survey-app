@@ -57,19 +57,19 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 1")
+        console.log("IN ComponentDidMount: this.props change 2")
         console.log(this.props)
 
         // console.log(this.props)
-        var queryCode = this.props.history.query.code;
+        // var queryCode = this.props.history.query.code;
         // error happened
         if (this.props.match.hasOwnProperty('error')) {
             alert(this.props.match.error)
         }
         // being redirected from auth page,fetch Token
-        if (queryCode != undefined) {
+        if (this.props.history.query != undefined && this.props.history.query.code != undefined) {
             console.log('In(hasOwnProperty(code)), user code created');
-            var code = queryCode;
+            var code = this.props.history.query.code;
             var state = this.props.history.query.state;
             UserProfile.setCode(code);
             UserProfile.setState(state);
