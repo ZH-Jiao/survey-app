@@ -56,7 +56,9 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidUpdate: this.props")
+        console.log("IN ComponentDidMount: this.props")
+        console.log(this.props.match)
+
         // console.log(this.props)
 
         // error happened
