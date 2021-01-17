@@ -31,15 +31,15 @@ class Login extends Component {
         this.componentDidMount = this.componentDidMount.bind(this);
 
         //temp for demo
-        console.log('In(constructor), user code and state');
-        if (this.props.match.hasOwnProperty('code')) {
-            console.log('In(constructor), if');
-            var code = this.props.match.code;
-            // var state = this.props.match.state;
-            console.log(code);
-            UserProfile.setCode(code);
-            this.startSurvey();
-        }
+        // console.log('In(constructor), user code and state');
+        // if (this.props.match.hasOwnProperty('code')) {
+        //     console.log('In(constructor), if');
+        //     var code = this.props.match.code;
+        //     // var state = this.props.match.state;
+        //     console.log(code);
+        //     UserProfile.setCode(code);
+        //     this.startSurvey();
+        // }
         
         // UserProfile.setState(state);
         // var token = this.fetchToken(code);
@@ -61,20 +61,20 @@ class Login extends Component {
         console.log(this.props)
 
         // console.log(this.props)
-
+        var queryCode = this.props.history.query.code;
         // error happened
         if (this.props.match.hasOwnProperty('error')) {
             alert(this.props.match.error)
         }
         // being redirected from auth page,fetch Token
-        if (this.props.match.hasOwnProperty('code')) {
+        if (queryCode != undefined) {
             console.log('In(hasOwnProperty(code)), user code created');
-            var code = this.props.match.code;
-            var state = this.props.match.state;
+            var code = queryCode;
+            var state = this.props.history.query.state;
             UserProfile.setCode(code);
             UserProfile.setState(state);
-            var token = this.fetchToken(code);
-            UserProfile.setToken(token);
+            // var token = this.fetchToken(code);
+            // UserProfile.setToken(token);
 
             // proceed without token
             this.startSurvey();
@@ -110,7 +110,9 @@ class Login extends Component {
 
     // Direct to reddit login and authentication
     redditAuthentication() {
-        const authUrl = 'https://www.reddit.com/api/v1/authorize?client_id=LDQqrgv2mmFMQQ&response_type=code&state=some_state&redirect_uri=http://surveyapp-env.eba-r92ervxm.us-east-1.elasticbeanstalk.com/&duration=temporary&scope=identity history'
+        const authUrl = 'https://www.reddit.com/api/v1/authorize?client_id=LDQqrgv2mmFMQQ&response_type=code&state=some_state&redirect_uri=' 
+            + redirectUri 
+            + '&duration=temporary&scope=identity history';
         window.location.assign(authUrl);
     }
 
