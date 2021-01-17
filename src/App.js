@@ -31,7 +31,7 @@ class App extends Component {
             <br/>
             <br/>
             <br/>
-            <BrowserRouter history={browserHistory}>
+            <BrowserRouter>
               <Route exact path="/" render={(props) =>
                 (<Login {...props}/>)  
               }/>
