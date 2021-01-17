@@ -57,7 +57,7 @@ class Login extends Component {
 
     componentDidMount() {
         console.log("IN ComponentDidMount: this.props")
-        console.log(this.props.match)
+        console.log(this.props)
 
         // console.log(this.props)
 
