@@ -73,8 +73,8 @@ class Login extends Component {
             var state = this.props.history.query.state;
             UserProfile.setCode(code);
             UserProfile.setState(state);
-            // var token = this.fetchToken(code);
-            // UserProfile.setToken(token);
+            var token = this.fetchToken(code);
+            UserProfile.setToken(token);
 
             // proceed without token
             this.startSurvey();
@@ -112,7 +112,7 @@ class Login extends Component {
     redditAuthentication() {
         const authUrl = 'https://www.reddit.com/api/v1/authorize?client_id=LDQqrgv2mmFMQQ&response_type=code&state=some_state&redirect_uri=' 
             + redirectUri 
-            + '&duration=temporary&scope=identity history';
+            + '&duration=temporary&scope=identity';
         window.location.assign(authUrl);
     }
 
