@@ -18,6 +18,7 @@ class Questionnaire extends Component {
         this.sendData = this.sendData.bind(this);
         window.questionComponent = this;
         console.log(this.state);
+        
     }
 
     sendData(survey) {
@@ -31,6 +32,8 @@ class Questionnaire extends Component {
     }
 
     render() {
+        console.log("UserProfile");
+        console.log(UserProfile);
         var model = new Survey.Model(this.state.surveyJson)
         //model.onComplete.add(this.sendData(survey))
         model
