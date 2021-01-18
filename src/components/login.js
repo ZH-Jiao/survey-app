@@ -57,7 +57,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 4")
+        console.log("IN ComponentDidMount: this.props change 5")
         console.log(this.props)
         const urlParams = new URLSearchParams(redirectUri + this.props.location.search);
         console.log("IN ComponentDidMount: URLParams");
@@ -81,7 +81,7 @@ class Login extends Component {
             var userName = this.fetchUserName(token);
             console.log('username', userName);
             // proceed without token
-            this.startSurvey();
+            // this.startSurvey();
         }
         // // proceed if has token
         // if (UserProfile.isLoggedIn()) {
