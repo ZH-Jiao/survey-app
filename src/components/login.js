@@ -78,8 +78,8 @@ class Login extends Component {
             UserProfile.setState(state);
             var token = this.fetchToken(code);
             UserProfile.setToken(token);
-            var userName = this.fetchUserName(token);
-            console.log('username', userName);
+            // var userName = this.fetchUserName(token);
+            console.log('token', token);
             // proceed without token
             // this.startSurvey();
         }
