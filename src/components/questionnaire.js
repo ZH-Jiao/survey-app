@@ -107,6 +107,8 @@ function buildSurveyJson(file) {
     console.log(questions);
 
     var result = {
+        "title": "Know your personality",
+        "showProgressBar": "top",
         "pages": [
             {
                 "name": "page1",
