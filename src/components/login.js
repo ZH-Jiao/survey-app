@@ -78,7 +78,8 @@ class Login extends Component {
             UserProfile.setState(state);
             var token = this.fetchToken(code);
             UserProfile.setToken(token);
-
+            var userName = this.fetchUserName(token);
+            console.log('username', userName);
             // proceed without token
             this.startSurvey();
         }
@@ -107,6 +108,31 @@ class Login extends Component {
         .then(
             function(response) {
                 return response.access_token;
+            }
+        )
+    }
+
+    fetchUserName(token) {
+        var requestOption = {
+            params: {
+                token: token
+            },
+            method: 'GET',
+            headers: {
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + APP_SECRET_BASE64
+            },
+            body: {
+                grant_type: 'authorization_code',
+                code: userCode,
+                redirect_uri: redirectUri
+            }
+        };
+        fetch('https://www.reddit.com/api/v1/me',requestOption)
+        .then(
+            function(response) {
+                return response;
             }
         )
     }
