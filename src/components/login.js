@@ -59,7 +59,9 @@ class Login extends Component {
     componentDidMount() {
         console.log("IN ComponentDidMount: this.props change 3")
         console.log(this.props)
-
+        const urlParams = new URLSearchParams(this.props.location.search);
+        console.log("IN ComponentDidMount: URLParams")
+        console.log(urlParams)
         // console.log(this.props)
         // var queryCode = this.props.history.query.code;
         // error happened
@@ -67,10 +69,10 @@ class Login extends Component {
             alert(this.props.match.error)
         }
         // being redirected from auth page,fetch Token
-        if (this.props.history.query != undefined && this.props.history.query.code != undefined) {
+        if (urlParams.get('code') != undefined) {
             console.log('In(hasOwnProperty(code)), user code created');
-            var code = this.props.history.query.code;
-            var state = this.props.history.query.state;
+            var code = urlParams.get('code');
+            var state = urlParams.get('state');
             UserProfile.setCode(code);
             UserProfile.setState(state);
             var token = this.fetchToken(code);
