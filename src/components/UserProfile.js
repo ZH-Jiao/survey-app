@@ -13,6 +13,14 @@ var UserProfile = (function() {
         // Also set this in cookie/localStorage
     };
 
+    var getState = function() {
+        return state;
+    };
+
+    var setState = function(new_state) {
+        state = new_state
+    };
+
     var getCode = function() {
         return code;
     };
@@ -37,6 +45,8 @@ var UserProfile = (function() {
     return {
         getName: getName,
         setName: setName,
+        getState: getState,
+        setState: setState,
         getCode: getCode,
         setCode: setCode,
         getToken: getToken,

@@ -57,11 +57,12 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 3")
+        console.log("IN ComponentDidMount: this.props change 4")
         console.log(this.props)
-        const urlParams = new URLSearchParams(this.props.location.search);
-        console.log("IN ComponentDidMount: URLParams")
-        console.log(urlParams)
+        const urlParams = new URLSearchParams(redirectUri + this.props.location.search);
+        console.log("IN ComponentDidMount: URLParams");
+        console.log(urlParams);
+        console.log(urlParams.get('code'));
         // console.log(this.props)
         // var queryCode = this.props.history.query.code;
         // error happened
