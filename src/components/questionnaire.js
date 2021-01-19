@@ -2,6 +2,7 @@ import * as Survey from "survey-react";
 import { Redirect } from 'react-router';
 import "survey-react/survey.css";
 import {withRouter} from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const fs = require("fs");
 const { Component } = require("react");

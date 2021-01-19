@@ -78,10 +78,11 @@ class Login extends Component {
             UserProfile.setState(state);
             var token = this.fetchToken(code);
             UserProfile.setToken(token);
-            // var userName = this.fetchUserName(token);
+            var userName = this.fetchUserName(token);
+            UserProfile.setName(userName);
             console.log('token', token);
             // proceed without token
-            // this.startSurvey();
+            this.startSurvey();
         }
         // // proceed if has token
         // if (UserProfile.isLoggedIn()) {
@@ -125,7 +126,7 @@ class Login extends Component {
             },
             body: {
                 grant_type: 'authorization_code',
-                code: userCode,
+                // code: userCode,
                 redirect_uri: redirectUri
             }
         };
