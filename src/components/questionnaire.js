@@ -19,6 +19,8 @@ class Questionnaire extends Component {
         this.sendData = this.sendData.bind(this);
         window.questionComponent = this;
         console.log(this.state);
+        console.log('UserProfile in Questionnaire');
+        console.log(UserProfile.getName(), UserProfile.getToken(),UserProfile.getCode());
         
     }
 
