@@ -92,26 +92,50 @@ class Login extends Component {
 
     // post to get token after getting the code from reddit
     fetchToken(userCode) {
-        var requestOption = {
+        // var requestOption = {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //         // 'Content-Type': 'application/x-www-form-urlencoded',
+        //         'Authorization': 'Basic ' + APP_SECRET_BASE64
+        //     },
+        //     body: {
+        //         grant_type: 'authorization_code',
+        //         code: userCode,
+        //         redirect_uri: redirectUri
+        //     }
+        // };
+        // fetch('https://www.reddit.com/api/v1/access_token', requestOption)
+        // .then(
+        //     function(response) {
+        //         console.log("response token", response)
+        //         return response.access_token;
+        //     }
+        // );
+
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic TERRcXJndjJtbUZNUVE6VGdtTmRON1FDb1Y2MURnRFV3ZmdvanF3eVAyY1lR");
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        // myHeaders.append("Cookie", "loid=000000000095eq616g.2.1607007962711.Z0FBQUFBQmZ5UDdhUEJMUmtKdURWNkIxYUtvUmJ6WkZ6QWNQeWVET1NrN0FNQU9oR1d1czhFNjFhVzdQZTd3NGRwbzJDU3REdnE2TWpKTjBUZkd4UlYwZXdPMHd1ejE5RmUtc3BUaU1SaHViUlZrVlVYN3pVSGVONmh1enFxRTZ0Um9yOVNKT2R6bnI; csv=1; edgebucket=eBgGiE6J7DpkHtaKp0");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("grant_type", "authorization_code");
+        urlencoded.append("code", userCode);
+        urlencoded.append("redirect_uri", "http://surveyapp-env.eba-r92ervxm.us-east-1.elasticbeanstalk.com/");
+
+        var requestOptions = {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + APP_SECRET_BASE64
-            },
-            body: {
-                grant_type: 'authorization_code',
-                code: userCode,
-                redirect_uri: redirectUri
-            }
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
         };
-        fetch('https://www.reddit.com/api/v1/access_token', requestOption)
+
+        fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
         .then(
             function(response) {
-                console.log("response token", response)
-                return response.access_token;
-            }
-        )
+            console.log("response token", response)
+            return response.access_token;
+        });
     }
 
     fetchUserName(token) {
