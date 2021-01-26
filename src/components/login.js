@@ -57,7 +57,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 6")
+        console.log("IN ComponentDidMount: this.props change 7")
         console.log(this.props)
         const urlParams = new URLSearchParams(redirectUri + this.props.location.search);
         console.log("IN ComponentDidMount: URLParams");
@@ -133,8 +133,8 @@ class Login extends Component {
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
         .then(
             function(response) {
-            console.log("response token", response)
-            return response.access_token;
+            console.log("response token", response["access_token"])
+            return response["access_token"];
         });
     }
 
