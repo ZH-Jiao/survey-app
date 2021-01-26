@@ -57,7 +57,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 9")
+        console.log("IN ComponentDidMount: this.props change 10")
         console.log(this.props)
         const urlParams = new URLSearchParams(redirectUri + this.props.location.search);
         console.log("IN ComponentDidMount: URLParams");
@@ -144,15 +144,16 @@ class Login extends Component {
         };
 
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
-        .then(response => response.text())
-        .then(
-            function(text) {
-            console.log("token response", text);
-            console.log("token response text", text["access_token"])
-            UserProfile.setToken(text["access_token"]);
+        .then(response => {
+            var token = response.json()['access_token'];
+            console.log("token response text", token);
+            UserProfile.setToken(token);
         });
     }
 
+    /*
+    * Fetch the username by the given token, and update it in UserProfile
+    */
     fetchUserName(token) {
         var requestOption = {
             params: {
@@ -160,23 +161,16 @@ class Login extends Component {
             },
             method: 'GET',
             headers: {
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + APP_SECRET_BASE64
+                'Authorization': 'bearer ' + token
             },
-            body: {
-                grant_type: 'authorization_code',
-                // code: userCode,
-                redirect_uri: redirectUri
-            }
         };
-        fetch('https://www.reddit.com/api/v1/me',requestOption)
-        .then(
-            function(response) {
-                console.log(response.text());
-                // UserProfile.setName(response.text())
+        fetch('https://oauth.reddit.com/api/v1/me',requestOption)
+        .then((response) => {
+                var username = response.json()['name'];
+                console.log('username', username)
+                UserProfile.setName(username);
             }
-        )
+        );
     }
 
     // Direct to reddit login and authentication
