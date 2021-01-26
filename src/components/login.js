@@ -133,8 +133,9 @@ class Login extends Component {
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
         .then(
             function(response) {
-            console.log("response token", response["access_token"])
-            return response["access_token"];
+            console.log("token response", response);
+            console.log("token response text", response.text())
+            return response.text()["access_token"];
         });
     }
 
