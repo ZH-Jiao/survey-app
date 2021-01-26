@@ -57,7 +57,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 7")
+        console.log("IN ComponentDidMount: this.props change 9")
         console.log(this.props)
         const urlParams = new URLSearchParams(redirectUri + this.props.location.search);
         console.log("IN ComponentDidMount: URLParams");
@@ -76,13 +76,26 @@ class Login extends Component {
             var state = urlParams.get('state');
             UserProfile.setCode(code);
             UserProfile.setState(state);
-            var token = this.fetchToken(code);
-            UserProfile.setToken(token);
-            var userName = this.fetchUserName(token);
-            UserProfile.setName(userName);
-            console.log('token', token);
+            var promise = new Promise((resolve) => {
+                this.fetchToken(code);
+                resolve(UserProfile.getToken());
+            });
+            promise.then((token) => {
+                console.log('Promise token', token);
+                this.fetchUserName(token);
+                resolve('fetch finish');
+            })
+            .then((message) => {
+                console.log(message);
+                this.startSurvey();
+            });
+            
+            
+            // var userName = this.fetchUserName(token);
+            // UserProfile.setName(userName);
+            // console.log('token', token);
             // proceed without token
-            this.startSurvey();
+            
         }
         // // proceed if has token
         // if (UserProfile.isLoggedIn()) {
@@ -131,11 +144,12 @@ class Login extends Component {
         };
 
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
+        .then(response => response.text())
         .then(
-            function(response) {
-            console.log("token response", response);
-            console.log("token response text", response.text())
-            return response.text()["access_token"];
+            function(text) {
+            console.log("token response", text);
+            console.log("token response text", text["access_token"])
+            UserProfile.setToken(text["access_token"]);
         });
     }
 
@@ -159,7 +173,8 @@ class Login extends Component {
         fetch('https://www.reddit.com/api/v1/me',requestOption)
         .then(
             function(response) {
-                return response;
+                console.log(response.text());
+                // UserProfile.setName(response.text())
             }
         )
     }
