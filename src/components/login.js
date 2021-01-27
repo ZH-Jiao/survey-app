@@ -76,22 +76,35 @@ class Login extends Component {
             var state = urlParams.get('state');
             UserProfile.setCode(code);
             UserProfile.setState(state);
+            
             var promise = new Promise((resolve) => {
                 this.fetchToken(code);
-                resolve(UserProfile.getToken());
+                this.fetchUserName(UserProfile.getToken());
+                console.log("finish fetching");
+                resolve(' ');
             });
-            promise.then((token) => {
-                console.log('Promise token', token);
-                this.fetchUserName(token);
-                return new Promise((resolve) => {
-                    resolve('fetch finish');
-                });
-                // resolve('fetch finish');
-            })
-            .then((message) => {
-                console.log(message);
+            promise.then((result) => {
+                console.log('Start survey');
                 this.startSurvey();
             });
+            
+
+            // var promise = new Promise((resolve) => {
+            //     this.fetchToken(code);
+            //     resolve(UserProfile.getToken());
+            // });
+            // promise.then((token) => {
+            //     console.log('Promise token', token);
+            //     this.fetchUserName(token);
+            //     return new Promise((resolve) => {
+            //         resolve('fetch finish');
+            //     });
+            //     // resolve('fetch finish');
+            // })
+            // .then((message) => {
+            //     console.log(message);
+            //     this.startSurvey();
+            // });
             
             
             // var userName = this.fetchUserName(token);
