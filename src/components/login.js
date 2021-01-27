@@ -76,8 +76,11 @@ class Login extends Component {
             var state = urlParams.get('state');
             UserProfile.setCode(code);
             UserProfile.setState(state);
-            var funcs = [this.fetchToken, this.fetchUserName];
-            this.series(funcs);
+            // var funcs = [this.fetchToken, this.fetchUserName];
+            // this.series(funcs);
+            this.fetchToken();
+            this.fetchUserName();
+            this.startSurvey();
             // let promise = new Promise(function(resolve, reject) {
             //     this.fetchToken(code);
             //     this.fetchUserName(UserProfile.getToken());
