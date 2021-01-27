@@ -12,9 +12,9 @@ export default class AWSConnection {
             region: "us-east-1",
         })
 
-
-        this.docClient = new AWS.DynamoDB.DocumentClient();
-        AWS.config.update(myConfig);
+        var dynamodb = new AWS.DynamoDB(myConfig);
+        this.docClient = new AWS.DynamoDB.DocumentClient({ service: dynamodb });
+        // AWS.config.update(myConfig);
     }
 
     addItem(tableName, item) {
