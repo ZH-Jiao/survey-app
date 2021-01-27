@@ -5,14 +5,14 @@ services:
   - docker
   # install docker
 
-before_install:
-  # build docker image
-  - docker build -t zhihengj/survey-app -f Dockerfile.dev .
+# before_install:
+#   # build docker image
+#   - docker build -t zhihengj/survey-app -f Dockerfile.dev .
 
 
-script:
-  # run the test
-  - docker run -e CI=true zhihengj/survey-app npm run test -- --coverage
+# script:
+#   # run the test
+#   - docker run -e CI=true zhihengj/survey-app npm run test -- --coverage
 
 
 # deploy
