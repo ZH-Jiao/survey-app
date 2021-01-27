@@ -57,7 +57,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 10")
+        console.log("IN ComponentDidMount: this.props change 11")
         console.log(this.props)
         const urlParams = new URLSearchParams(redirectUri + this.props.location.search);
         console.log("IN ComponentDidMount: URLParams");
