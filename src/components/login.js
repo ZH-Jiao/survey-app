@@ -76,26 +76,28 @@ class Login extends Component {
             var state = urlParams.get('state');
             UserProfile.setCode(code);
             UserProfile.setState(state);
-            
-            let promise = new Promise(function(resolve, reject) {
-                this.fetchToken(code);
-                this.fetchUserName(UserProfile.getToken());
-                console.log("finish fetching");
-                if (true) {
-                    resolve('success');
-                } else {
-                    reject(' ');
-                }
-            });
-            promise.then(
-                function(result) {
-                console.log('Start survey', result);
-                this.startSurvey();
-                },
-                function(error) {
-                    console.log('Rejected in promise', error);
-                }
-            );
+            this.fetchToken(code);
+            this.fetchUserName(UserProfile.getToken());
+            this.startSurvey();
+            // let promise = new Promise(function(resolve, reject) {
+            //     this.fetchToken(code);
+            //     this.fetchUserName(UserProfile.getToken());
+            //     console.log("finish fetching");
+            //     if (true) {
+            //         resolve('success');
+            //     } else {
+            //         reject(' ');
+            //     }
+            // });
+            // promise.then(
+            //     function(result) {
+            //     console.log('Start survey', result);
+            //     this.startSurvey();
+            //     },
+            //     function(error) {
+            //         console.log('Rejected in promise', error);
+            //     }
+            // );
             
 
             // var promise = new Promise((resolve) => {
