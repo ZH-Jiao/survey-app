@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const REDIRECT_URI = "http://surveyapp-env.eba-r92ervxm.us-east-1.elasticbeanstalk.com/questionnaire";
+export const REDIRECT_URI = "http://surveyapp-env.eba-r92ervxm.us-east-1.elasticbeanstalk.com/questionnaire/";
 export const APP_SECRET_BASE64 = "TERRcXJndjJtbUZNUVE6VGdtTmRON1FDb1Y2MURnRFV3ZmdvanF3eVAyY1lR";
 
 class Login extends Component {
