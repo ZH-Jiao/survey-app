@@ -44,7 +44,7 @@ class Questionnaire extends Component {
             // var funcs = [this.fetchToken, this.fetchUserName];
             // this.series(funcs);
             this.fetchToken();
-            this.fetchUserName();
+            // this.fetchUserName();
             // this.startSurvey();
             // let promise = new Promise(function(resolve, reject) {
             //     this.fetchToken(code);
@@ -159,7 +159,8 @@ class Questionnaire extends Component {
                 
                 console.log("token response text", token);
                 UserProfile.setToken(token);
-
+                // fetch user name
+                this.fetchUserName();
             });
             
         });
