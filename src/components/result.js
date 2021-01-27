@@ -1,5 +1,6 @@
 import { Redirect } from 'react-router';
 import AWSConnection from './DynamoDbConnection';
+import UserProfile from './UserProfile';
 
 const { Component } = require("react");
 const react = require("react");
@@ -13,6 +14,9 @@ class Result extends Component {
         this.state = {
                         data: this.retreiveData()
                      }
+        console.log("UserProfile in Result");
+        console.log(UserProfile.getName());
+        console.log(UserProfile.getToken());
     }
 
     retreiveData() {
