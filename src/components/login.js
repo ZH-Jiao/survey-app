@@ -28,7 +28,7 @@ class Login extends Component {
         super(props);
         this.startSurvey = this.startSurvey.bind(this);
         this.redditAuthentication = this.redditAuthentication.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
+        // this.componentDidMount = this.componentDidMount.bind(this);
 
         //temp for demo
         // console.log('In(constructor), user code and state');
