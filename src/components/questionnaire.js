@@ -151,9 +151,15 @@ class Questionnaire extends Component {
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
         .then((response) => {
             console.log("token response", response.json());
-            var token = response.json().access_token;
-            console.log("token response text", token);
-            UserProfile.setToken(token);
+            response.json().then((result) => {
+                console.log("token response then", result);
+                var token = result['access_token'];
+                
+                console.log("token response text", token);
+                UserProfile.setToken(token);
+
+            });
+            
         });
     }
 
