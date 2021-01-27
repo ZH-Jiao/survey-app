@@ -77,16 +77,25 @@ class Login extends Component {
             UserProfile.setCode(code);
             UserProfile.setState(state);
             
-            var promise = new Promise((resolve) => {
+            let promise = new Promise(function(resolve, reject) {
                 this.fetchToken(code);
                 this.fetchUserName(UserProfile.getToken());
                 console.log("finish fetching");
-                resolve(' ');
+                if (True) {
+                    resolve('success');
+                } else {
+                    reject(' ');
+                }
             });
-            promise.then((result) => {
-                console.log('Start survey');
+            promise.then(
+                function(result) {
+                console.log('Start survey', result);
                 this.startSurvey();
-            });
+                },
+                function(error) {
+                    console.log('Rejected in promise', error);
+                }
+            );
             
 
             // var promise = new Promise((resolve) => {
