@@ -81,7 +81,7 @@ class Login extends Component {
                 this.fetchToken(code);
                 this.fetchUserName(UserProfile.getToken());
                 console.log("finish fetching");
-                if (True) {
+                if (true) {
                     resolve('success');
                 } else {
                     reject(' ');
