@@ -150,8 +150,10 @@ class Questionnaire extends Component {
 
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
         .then((response) => {
-            console.log("token response", response.json());
-            response.json().then((result) => {
+            var responseJson = response.json();
+            console.log("token response", responseJson);
+            console.log("token response json", responseJson['access_token']);
+            responseJson.then((result) => {
                 console.log("token response then", result);
                 var token = result['access_token'];
                 
