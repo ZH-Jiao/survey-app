@@ -169,7 +169,7 @@ class Login extends Component {
         };
 
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
-        .then(response => {
+        .then((response) => {
             var token = response.json()['access_token'];
             console.log("token response text", token);
             UserProfile.setToken(token);
