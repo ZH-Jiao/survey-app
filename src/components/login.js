@@ -76,9 +76,8 @@ class Login extends Component {
             var state = urlParams.get('state');
             UserProfile.setCode(code);
             UserProfile.setState(state);
-            this.fetchToken(code);
-            this.fetchUserName(UserProfile.getToken());
-            this.startSurvey();
+            var funcs = [this.fetchToken, this.fetchUserName];
+            this.series(funcs);
             // let promise = new Promise(function(resolve, reject) {
             //     this.fetchToken(code);
             //     this.fetchUserName(UserProfile.getToken());
@@ -130,8 +129,19 @@ class Login extends Component {
         // }
     }
 
+    series(funcs) {
+        if (funcs) {
+            // excecute func
+            funcs[0]();
+            funcs.shift();
+            return this.series(funcs);
+        } else {
+            this.startSurvey();
+        }
+    }
+
     // post to get token after getting the code from reddit
-    fetchToken(userCode) {
+    fetchToken() {
         // var requestOption = {
         //     method: 'POST',
         //     headers: {
@@ -152,7 +162,7 @@ class Login extends Component {
         //         return response.access_token;
         //     }
         // );
-
+        var userCode = UserProfile.getCode();
         var myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic TERRcXJndjJtbUZNUVE6VGdtTmRON1FDb1Y2MURnRFV3ZmdvanF3eVAyY1lR");
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -172,6 +182,7 @@ class Login extends Component {
 
         fetch("https://www.reddit.com/api/v1/access_token", requestOptions)
         .then((response) => {
+            console.log("token response", response.json());
             var token = response.json()['access_token'];
             console.log("token response text", token);
             UserProfile.setToken(token);
@@ -181,7 +192,8 @@ class Login extends Component {
     /*
     * Fetch the username by the given token, and update it in UserProfile
     */
-    fetchUserName(token) {
+    fetchUserName() {
+        var token = UserProfile.getToken();
         var requestOption = {
             params: {
                 token: token
