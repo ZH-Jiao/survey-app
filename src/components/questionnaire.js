@@ -182,9 +182,13 @@ class Questionnaire extends Component {
         };
         fetch('https://oauth.reddit.com/api/v1/me',requestOption)
         .then((response) => {
-                var username = response.json()['name'];
-                console.log('username', username)
-                UserProfile.setName(username);
+                var responseJson = response.json();
+                responseJson.then((result) => {
+                    console.log("username response then", result);
+                    var username = result['name'];
+                    console.log("username response name", username);
+                    UserProfile.setName(username);
+                });
             }
         );
     }

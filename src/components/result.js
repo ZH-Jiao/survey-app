@@ -25,8 +25,8 @@ class Result extends Component {
 
     uploadResult(resultList) {
         var item = {
-            "user": "testUser",
-            // "score1": resultList[0],
+            "user": UserProfile.getName(),
+            "score1": resultList[0],
             "score2": resultList[1],
             "score3": resultList[2],
             "score4": resultList[3],
