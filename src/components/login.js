@@ -83,7 +83,10 @@ class Login extends Component {
             promise.then((token) => {
                 console.log('Promise token', token);
                 this.fetchUserName(token);
-                resolve('fetch finish');
+                return new Promise((resolve) => {
+                    resolve('fetch finish');
+                });
+                // resolve('fetch finish');
             })
             .then((message) => {
                 console.log(message);
