@@ -26,25 +26,21 @@ class Questionnaire extends Component {
     }
 
     componentDidMount() {
-        console.log("IN ComponentDidMount: this.props change 11")
-        console.log(this.props)
-        const urlParams = new URLSearchParams(REDIRECT_URI + this.props.location.search);
-        console.log("IN ComponentDidMount: URLParams");
-        console.log(urlParams);
-        console.log(urlParams.get('code'));
+        // console.log("IN ComponentDidMount: this.props change 11")
         // console.log(this.props)
-        // var queryCode = this.props.history.query.code;
-        // error happened
-        if (this.props.match.hasOwnProperty('error')) {
-            alert(this.props.match.error)
-        }
+        // const urlParams = new URLSearchParams(REDIRECT_URI + this.props.location.search);
+        // console.log("IN ComponentDidMount: URLParams");
+        // console.log(urlParams);
+        // console.log(urlParams.get('code'));
+        // // console.log(this.props)
+        // // var queryCode = this.props.history.query.code;
+        // // error happened
+        // if (this.props.match.hasOwnProperty('error')) {
+        //     alert(this.props.match.error)
+        // }
         // being redirected from auth page,fetch Token
-        if (urlParams.get('code') != undefined) {
-            console.log('In(hasOwnProperty(code)), user code created');
-            var code = urlParams.get('code');
-            var state = urlParams.get('state');
-            UserProfile.setCode(code);
-            UserProfile.setState(state);
+        if (UserProfile.getCode() != undefined) {
+            console.log('In(Questionnaire with user code), user code created');
             // var funcs = [this.fetchToken, this.fetchUserName];
             // this.series(funcs);
             this.fetchToken();

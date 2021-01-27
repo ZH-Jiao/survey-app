@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const REDIRECT_URI = "http://surveyapp-env.eba-r92ervxm.us-east-1.elasticbeanstalk.com/questionnaire/";
+export const REDIRECT_URI = "http://surveyapp-env.eba-r92ervxm.us-east-1.elasticbeanstalk.com/";
 export const APP_SECRET_BASE64 = "TERRcXJndjJtbUZNUVE6VGdtTmRON1FDb1Y2MURnRFV3ZmdvanF3eVAyY1lR";
 
 class Login extends Component {
@@ -28,7 +28,7 @@ class Login extends Component {
         super(props);
         this.startSurvey = this.startSurvey.bind(this);
         this.redditAuthentication = this.redditAuthentication.bind(this);
-        // this.componentDidMount = this.componentDidMount.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
 
         //temp for demo
         // console.log('In(constructor), user code and state');
@@ -48,6 +48,30 @@ class Login extends Component {
         // proceed without token
         
 
+    }
+
+    componentDidMount() {
+        console.log("IN ComponentDidMount: this.props change 11")
+        // console.log(this.props)
+        const urlParams = new URLSearchParams(REDIRECT_URI + this.props.location.search);
+        console.log("IN ComponentDidMount: URLParams");
+        console.log(urlParams);
+        console.log(urlParams.get('code'));
+        // console.log(this.props)
+        // var queryCode = this.props.history.query.code;
+        // error happened
+        if (this.props.match.hasOwnProperty('error')) {
+            alert(this.props.match.error)
+        }
+        // being redirected from auth page,fetch Token
+        if (urlParams.get('code') != undefined) {
+            console.log('In(hasOwnProperty(code)), user code created');
+            var code = urlParams.get('code');
+            var state = urlParams.get('state');
+            UserProfile.setCode(code);
+            UserProfile.setState(state);
+            this.startSurvey();
+        }
     }
     
     startSurvey() {
